@@ -57,6 +57,9 @@ COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encrypti
 FROM gitlab/gitlab-ee:15.1.2-ee.0 AS gitlab-15.1.2-deploy
 COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
 
+FROM gitlab/gitlab-ee:15.1.1-ee.0 AS gitlab-15.1.1-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
 FROM gitlab/gitlab-ee:15.1.0-ee.0 AS gitlab-15.1.0-deploy
 COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
 
