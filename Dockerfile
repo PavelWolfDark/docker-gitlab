@@ -1,4 +1,19 @@
-ARG GITLAB_VERSION=15.4.2
+ARG GITLAB_VERSION=15.5.2
+
+FROM gitlab/gitlab-ee:15.5.2-ee.0 AS gitlab-15.5.2-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.5.1-ee.0 AS gitlab-15.5.1-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.5.0-ee.0 AS gitlab-15.5.0-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.4.4-ee.0 AS gitlab-15.4.4-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.4.3-ee.0 AS gitlab-15.4.3-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
 
 FROM gitlab/gitlab-ee:15.4.2-ee.0 AS gitlab-15.4.2-deploy
 COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
