@@ -1,4 +1,25 @@
-ARG GITLAB_VERSION=15.5.2
+ARG GITLAB_VERSION=15.6.2
+
+FROM gitlab/gitlab-ee:15.6.2-ee.0 AS gitlab-15.6.2-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.6.1-ee.0 AS gitlab-15.6.1-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.6.0-ee.0 AS gitlab-15.6.0-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.5.6-ee.0 AS gitlab-15.5.6-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.5.5-ee.0 AS gitlab-15.5.5-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.5.4-ee.0 AS gitlab-15.5.4-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+
+FROM gitlab/gitlab-ee:15.5.3-ee.0 AS gitlab-15.5.3-deploy
+COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
 
 FROM gitlab/gitlab-ee:15.5.2-ee.0 AS gitlab-15.5.2-deploy
 COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
@@ -97,4 +118,4 @@ FROM gitlab/gitlab-ee:15.0.0-ee.0 AS gitlab-15.0.0-deploy
 COPY license_key.pub /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
 
 FROM gitlab-${GITLAB_VERSION}-deploy AS deploy
-LABEL maintainer="cyberviking@darkwolf.team"
+LABEL maintainer="Pavel Wolf <cyberviking@darkwolf.team>"
